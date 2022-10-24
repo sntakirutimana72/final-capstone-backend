@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+1. Issue  : <!-- EDITOR="code --wait" rails credentials:edit -->
+    ressource : https://www.folkstalk.com/2022/09/rails-master-key-with-code-examples.html
