@@ -14,7 +14,6 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def respond_to_on_destroy
-    # jwt_payload = JWT.decode(request.headers['Authorization'].split(' ').last, Rails.application.secrets.secret_key_base).first
     jwt_payload = JWT.decode(request.headers['Authorization'].split.last,
                              Rails.application.credentials.fetch(:secret_key_base)).first
     current_user = User.find(jwt_payload['sub'])
