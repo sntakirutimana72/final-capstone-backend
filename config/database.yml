@@ -1,9 +1,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
+  username: wale
   # password: 1234
-  password: admin
+  # password: admin
+  password: Toyin@5315
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
@@ -13,6 +14,7 @@ development:
 test:
   <<: *default
   database: hotel_booking_app_backend_test
+
 
 production:
   <<: *default
