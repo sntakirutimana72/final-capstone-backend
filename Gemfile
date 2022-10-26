@@ -38,8 +38,11 @@ gem 'rack-cors'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'bullet'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 group :development do
@@ -52,3 +55,5 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'devise', '~> 4.8'
 
 gem 'devise-jwt', '~> 0.10.0'
+
+gem 'cancancan', '~> 3.4'

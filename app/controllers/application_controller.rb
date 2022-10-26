@@ -11,7 +11,7 @@ class ApplicationController < ActionController::API
     {
       username: user.username,
       email: user.email,
-      is_admin: user.is_admin
+      role: user.role.name
     }
   end
 end
