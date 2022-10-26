@@ -26,7 +26,7 @@
 !/tmp/storage/.keep
 
 # Ignore master key for decrypting credentials and more.
-/config/credentials.yml.enc
 /config/master.key
-/.env
-/Gemfile.lock
+
+.env
+Gemfile.lock
