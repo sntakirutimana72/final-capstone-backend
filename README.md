@@ -20,6 +20,7 @@ Things you may want to cover:
   bundle install
   ```
 ### Database creation
+  The database is created according to this [ERD Diagram](https://drawsql.app/teams/steve72/diagrams/final-capstone)
   3. Create the database
   ```
   rails db:create
