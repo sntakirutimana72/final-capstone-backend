@@ -8,7 +8,7 @@ class Users::SessionsController < Devise::SessionsController
       status: {
         code: 200,
         message: 'User logged in successfully.',
-        data: current_user
+        data: user_to_json(current_user)
       }
     }, status: :ok
   end
