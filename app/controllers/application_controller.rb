@@ -1,9 +1,7 @@
 class ApplicationController < ActionController::API
-  before_action :permit_params
-
-  private
+  before_action :permit_params, if: :devise_controller?
 
   def permit_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username email password])
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password) }
   end
 end
