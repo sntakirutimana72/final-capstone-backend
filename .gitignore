@@ -28,12 +28,5 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# Ignore editor local configs
-/.vscode
-/.idea
-
-# Ignore node_modules for JavaScript packages
-/node_modules
-
-# Ignore local environemental variables
 .env
+Gemfile.lock
