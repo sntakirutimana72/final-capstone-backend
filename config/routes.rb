@@ -5,5 +5,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  resource :reservations, only: [:index, :show]
+
   get 'logged_user', to: 'users#index'
 end
