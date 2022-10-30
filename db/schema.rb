@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_27_074038) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_30_113121) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,8 +21,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_27_074038) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.bigint "room_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "room_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_reservations_on_room_id"
@@ -36,8 +36,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_27_074038) do
   end
 
   create_table "room_accomodations", force: :cascade do |t|
-    t.bigint "room_id", null: false
-    t.bigint "accomodation_id", null: false
+    t.bigint "room_id"
+    t.bigint "accomodation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["accomodation_id"], name: "index_room_accomodations_on_accomodation_id"
@@ -55,10 +55,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_27_074038) do
     t.integer "number_of_beds", null: false
     t.decimal "price", null: false
     t.text "description"
-    t.bigint "room_type_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "room_type_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
     t.index ["room_type_id"], name: "index_rooms_on_room_type_id"
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end

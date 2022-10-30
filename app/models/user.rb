@@ -8,8 +8,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self
-  
-  ROLES = %w{super_admin admin client}
+
+  ROLES = %w[super_admin admin client].freeze
 
   ROLES.each do |role_name|
     define_method "#{role_name}?" do
@@ -17,5 +17,4 @@ class User < ApplicationRecord
       # self.role.name == role_name
     end
   end
-  
 end
