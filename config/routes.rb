@@ -6,4 +6,10 @@ Rails.application.routes.draw do
   }
 
   get 'logged_user', to: 'users#index'
+
+  namespace do
+      resources :add_rooms
+  end
+
+
 end
