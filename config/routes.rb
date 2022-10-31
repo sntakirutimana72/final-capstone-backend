@@ -5,7 +5,12 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resource :reservations, only: [:index, :show]
-
   get 'logged_user', to: 'users#index'
+
+  namespace :api do
+    namespace :v1 do
+      resources :rooms, only: [:index, :show]
+    end
+  end
+
 end
