@@ -10,5 +10,4 @@ RSpec.describe Room, type: :model do
   it { should validate_presence_of(:price) }
   it { should validate_presence_of(:number_of_beds) }
   it { should validate_presence_of(:picture) }
-
 end
