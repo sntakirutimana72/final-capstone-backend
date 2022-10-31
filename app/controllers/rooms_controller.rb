@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
 
   def create
     @user = current_user
-    room = Room.new(params.require(:room).permit(:name, :number_of_beds, :price, :description))
+    room = Room.new(params.require(:room).permit(:name, :number_of_beds, :price, :description, :picture))
     room.user_id = @user.id
     respond_to do |format|
       format.html do
