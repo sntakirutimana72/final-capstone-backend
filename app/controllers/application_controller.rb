@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   before_action :permit_params, if: :devise_controller?
- 
+
   private
 
   def permit_params
