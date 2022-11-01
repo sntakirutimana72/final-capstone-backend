@@ -1,6 +1,5 @@
 class RoomsController < ApplicationController
-
-before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def new
     @room = Room.new
@@ -16,12 +15,9 @@ before_action :authenticate_user!
     end
   end
 
-
   private
 
   def room_params
-      params.require(:room).permit(:name, :number_of_beds, :price, :description, :picture, :room_type_id, :user_id)
+    params.require(:room).permit(:name, :number_of_beds, :price, :description, :picture, :room_type_id, :user_id)
   end
-
-
 end

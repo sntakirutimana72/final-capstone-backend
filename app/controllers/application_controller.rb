@@ -26,7 +26,4 @@ class ApplicationController < ActionController::API
       room_type: room.room_type.name
     }
   end
-
-
-
 end
