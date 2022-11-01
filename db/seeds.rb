@@ -14,6 +14,6 @@
 #   RoomType.create(name: "#{i +1} star")
 # end
 
-10.times do |i|
-  Accomodation.create(name: "#{i +1}")
-end
+# 10.times do |i|
+#   Accomodation.create(name: "#{i +1}")
+# end

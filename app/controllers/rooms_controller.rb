@@ -1,22 +1,27 @@
 class RoomsController < ApplicationController
+
+before_action :authenticate_user!
+
   def new
     @room = Room.new
   end
 
   def create
-    @user = current_user
-    room = Room.new(params.require(:room).permit(:name, :number_of_beds, :price, :description, :picture))
-    room.user_id = @user.id
-    respond_to do |format|
-      format.html do
-        if room.save
-          flash[:success] = 'Room created successfully'
-          redirect_to user_rooms_path(@user)
-        else
-          flash.now[:error] = 'Error: Room could not be created'
-          render :new, locals: { room: }
-        end
-      end
+    @room = Room.new(room_params)
+
+    if @room.save
+      render json: @room, status: :created, location: @room
+    else
+      render json: @room.errors, status: :unprocessable_entity
     end
   end
+
+
+  private
+
+  def room_params
+      params.require(:room).permit(:name, :number_of_beds, :price, :description, :picture, :room_type_id, :user_id)
+  end
+
+
 end

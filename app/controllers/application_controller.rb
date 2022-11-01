@@ -14,4 +14,19 @@ class ApplicationController < ActionController::API
       role: user.role.name
     }
   end
+
+  def room_to_json(room)
+    {
+      id: room.id,
+      name: room.name,
+      number_of_beds: room.number_of_beds,
+      price: room.price,
+      picture: room.picture,
+      description: room.description,
+      room_type: room.room_type.name
+    }
+  end
+
+
+
 end
