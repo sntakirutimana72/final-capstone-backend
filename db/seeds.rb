@@ -11,6 +11,7 @@
 admin = User.create(username: 'Jaguar', email: 'jgnuru@email', password: 'pwd@123', role_id: 2)
 # create rooms
 #
+<<<<<<< HEAD
 ## for single
 room_single = Room.create(
   name: 'RMGT-05',
@@ -41,3 +42,19 @@ guest.reservations.create(room: room_single, from_date: Date.today, to_date: Dat
 guest.reservations.create(room: room_couple, from_date: Date.today, to_date: Date.today + 1.day)
 #
 # ===
+=======
+#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+#   Character.create(name: "Luke", movie: movies.first)
+
+# 3.times do |i|
+#   Role.create(name: "role #{i +1}")
+# end
+
+# 5.times do |i|
+#   RoomType.create(name: "#{i +1} star")
+# end
+
+10.times do |i|
+  Accomodation.create(name: "#{i +1}")
+end
+>>>>>>> development
