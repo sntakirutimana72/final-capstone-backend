@@ -25,8 +25,11 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 
+# Ignore test directory
+/test
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-.env
-Gemfile.lock
+/.env
+/Gemfile.lock

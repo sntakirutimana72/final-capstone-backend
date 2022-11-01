@@ -1,24 +1,30 @@
 class Users::SessionsController < Devise::SessionsController
+  before_action :authenticate_user!, only: :destroy
+
   respond_to :json
+
+  def destroy
+    @logged_out_user = current_user
+    super
+  end
 
   private
   
+  def verify_signed_out_user; end
+
   def respond_with(_resource, _options = {})
-    render json: {
-      status: {
-        code: 200,
+    render(
+      json: {
+        status: 200,
         message: 'User logged in successfully.',
-        data: user_to_json(current_user)
-      }
-    }, status: :ok
+        user: UserSerializer.new(current_user)
+      },
+      status: :ok
+    )
   end
 
   def respond_to_on_destroy
-    jwt_payload = JWT.decode(request.headers['Authorization'].split.last,
-                             Rails.application.credentials.fetch(:secret_key_base)).first
-    current_user = User.find(jwt_payload['sub'])
-
-    if current_user
+    if @logged_out_user
       render json: {
         status: 200,
         message: 'User logged out successfully.'
