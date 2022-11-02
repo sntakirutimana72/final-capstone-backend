@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :query_resesrvation, except: :mine
+  # before_action :query_resesrvation, except: :mine
 
   def index; end
 
@@ -11,9 +11,6 @@ class ReservationsController < ApplicationController
         .includes(room: %i[room_type room_accomodations accomodations])
     )
   end
-
-  def room_list; end
-
   def create
     @reservation = Reservation.new(create_params)
     @reservation.user_id = current_user.id
@@ -51,9 +48,9 @@ class ReservationsController < ApplicationController
     params.require(:reservation).permit(:from_date, :to_date)
   end
 
-  def query_resesrvation
-    @reservation = current_user.reservations.find(params[:id])
-  rescue StandardError
-    respond_not_found
-  end
+  # def query_resesrvation
+  #   @reservation = current_user.reservations.find(params[:id])
+  # rescue StandardError
+  #   respond_not_found
+  # end
 end

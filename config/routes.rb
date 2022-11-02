@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :reservations, only: [:create,:destroy, :update]
   get 'logged_user', to: 'users#index'
   get 'reservations/mine'
-  get 'reservations/room-list', to: 'reservations#room_list'
+  get 'room-list', to: 'room#room_list'
 end
