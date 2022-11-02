@@ -16,7 +16,8 @@ class RoomsController < ApplicationController
 
     if @room.save
 
-     
+      list = Accomodation.where(id = accomodation_params)
+      @room.accomodations.push(*list)
 
       render json: @room, status: :created, location: @room
     else
@@ -26,7 +27,9 @@ class RoomsController < ApplicationController
 
   private
 
-
+  def accomodation_params
+    params.require(:room).permit(accomodation: [])
+  end
 
   def room_params
     params.require(:room).permit(:name, :number_of_beds, :price, :description, :picture, :room_type_id).with_defaults(user_id: current_user.id)
