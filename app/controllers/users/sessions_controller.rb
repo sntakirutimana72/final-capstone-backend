@@ -9,7 +9,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   private
-  
+
   def verify_signed_out_user; end
 
   def respond_with(_resource, _options = {})
