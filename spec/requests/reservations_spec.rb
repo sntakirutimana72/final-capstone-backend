@@ -32,13 +32,33 @@ RSpec.describe(ReservationsController, type: :request) do
         expect(response).to have_http_status(:ok)
       end
 
-      it('update reservation') do
-        patch(
-          reservation_path(@reservation),
-          headers: @headers,
-          params: { reservation: { from_date: Date.today, to_date: Date.today } }, as: :json
-        )
-        expect(response).to have_http_status(:ok)
+      context('update reservation') do
+        it('with only :to_date') do
+          patch(
+            reservation_path(@reservation),
+            headers: @headers,
+            params: { reservation: { to_date: Date.today } }, as: :json
+          )
+          expect(response).to have_http_status(:ok)
+        end
+
+        it('with only :from_date') do
+          patch(
+            reservation_path(@reservation),
+            headers: @headers,
+            params: { reservation: { from_date: Date.today } }, as: :json
+          )
+          expect(response).to have_http_status(:ok)
+        end
+
+        it('with both :from_date & :to_date') do
+          patch(
+            reservation_path(@reservation),
+            headers: @headers,
+            params: { reservation: { from_date: Date.today, to_date: Date.today } }, as: :json
+          )
+          expect(response).to have_http_status(:ok)
+        end
       end
 
       it('cancel the reservation') do
