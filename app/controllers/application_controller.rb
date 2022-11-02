@@ -26,4 +26,11 @@ class ApplicationController < ActionController::API
       room_type: room.room_type.name
     }
   end
+
+  def room_type_to_json(room_type)
+    {
+      id: room_type.id,
+      name: room_type.name
+    }
+  end
 end
