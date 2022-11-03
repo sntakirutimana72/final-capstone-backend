@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :rooms, only: [:index, :show, :create]
       get 'reservations/mine'
-      get 'room-list', to: 'room#room_list'
+      get 'room-list', to: 'reservations#room_list'
       resources :reservations, only: [:create, :destroy, :update]
       get 'rooms_types/index'
     end

@@ -12,7 +12,6 @@ class Api::V1::RoomsController < ApplicationController
     render json: @room, status: :ok
   end
 
-
   def create
     @room = Room.new(room_params)
 
@@ -25,17 +24,9 @@ class Api::V1::RoomsController < ApplicationController
     end
   end
 
-
-
-
-  def room_list
-    @room = Room.select('id, name')
-    render json: { rooms: @room }, status: :ok
-  end
-
   private
 
-   def acc_params
+  def acc_params
     params.require(:room).permit(accomodations: [])
   end
 
@@ -44,5 +35,4 @@ class Api::V1::RoomsController < ApplicationController
       .permit(:name, :number_of_beds, :price, :description, :picture, :room_type_id)
       .merge(user: current_user)
   end
-  
 end

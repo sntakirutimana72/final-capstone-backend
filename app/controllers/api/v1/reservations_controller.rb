@@ -1,9 +1,13 @@
 class Api::V1::ReservationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :query_resesrvation, except: %i[mine create]
+  before_action :query_resesrvation, except: %i[mine create room_list]
   load_and_authorize_resource
 
-  def index; end
+  def room_list
+    @reserved_rooms = Reservation.pluck(:room_id)
+    @rooms = Room.where('id != ?', @reserved_rooms).select('id,name')
+    render json: { rooms: @rooms }, status: :ok
+  end
 
   def mine
     render(
