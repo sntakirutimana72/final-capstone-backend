@@ -10,10 +10,13 @@
 #   Role.create(name: "role #{i +1}")
 # end
 
-# 5.times do |i|
-#   RoomType.create(name: "#{i +1} star")
-# end
+Role.create(name: "super_admin")
+Role.create(name: "admin")
+Role.create(name: "client")
 
+5.times do |i|
+  RoomType.create(name: "#{i+1} star")
+end
 # 10.times do |i|
 #   Accomodation.create(name: "#{i +1}")
 # end
