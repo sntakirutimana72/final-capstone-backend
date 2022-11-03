@@ -1,6 +1,12 @@
-class RoomsController < ApplicationController
-  # before_action :authenticate_user!
 
+class RoomController < ApplicationController
+    # before_action :authenticate_user!
+    # before_action :query_resesrvation, except: :mine
+    def room_list
+      @room = Room.select('id, name')
+      render json: { rooms: @room }, status: :ok
+    end
+    
   def new
     @room = Room.new
   end
@@ -34,3 +40,4 @@ class RoomsController < ApplicationController
                                  :room_type_id).with_defaults(user_id: current_user.id)
   end
 end
+

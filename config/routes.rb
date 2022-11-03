@@ -5,14 +5,16 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  resources :reservations, only: [:create,:destroy, :update]
+  get 'logged_user', to: 'users#index'
+  get 'reservations/mine'
+  get 'room-list', to: 'room#room_list'
     resources :rooms
   resources :reservations, only: [:destroy, :update]
   get 'logged_user', to: 'users#index'
   get 'reservations/mine'
 
     resources :rooms_types
-
-  get 'logged_user', to: 'users#index'
   namespace :api do
     namespace :v1 do
       resources :rooms, only: [:index, :show]
