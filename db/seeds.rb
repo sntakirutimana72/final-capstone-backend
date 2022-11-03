@@ -9,3 +9,5 @@ RoomType.create(name: 'Classic')
 RoomType.create(name: 'Regular')
 RoomType.create(name: 'Deluxe')
 
+# accomodations necessary when creating a new room
+%w(internet garden transportation breakfast dinner lunch).each { |name| Accomodation.create(name:) }

@@ -1,11 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
-  before_action :authenticate_user!, only: %i[destroy logged_user]
-
   respond_to :json
-
-  def logged_user
-    render json: current_user, status: :ok
-  end
 
   def destroy
     @logged_out_user = current_user
