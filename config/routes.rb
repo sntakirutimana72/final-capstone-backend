@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-
   get 'logged_user', to: 'users#index'
 
   namespace :api do
@@ -12,5 +11,4 @@ Rails.application.routes.draw do
       resources :rooms, only: [:index, :show]
     end
   end
-
 end
