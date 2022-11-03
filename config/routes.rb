@@ -9,4 +9,9 @@ Rails.application.routes.draw do
 
   get 'logged_user', to: 'users#index'
   get 'reservations/mine'
+  namespace :api do
+    namespace :v1 do
+      resources :rooms
+    end
+  end
 end
