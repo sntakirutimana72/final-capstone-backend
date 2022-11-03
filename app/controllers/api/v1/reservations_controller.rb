@@ -1,4 +1,4 @@
-class ReservationsController < ApplicationController
+class Api::V1::ReservationsController < ApplicationController
   before_action :authenticate_user!
   before_action :query_resesrvation, except: %i[mine create]
   load_and_authorize_resource
