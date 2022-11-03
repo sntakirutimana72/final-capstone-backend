@@ -1,5 +1,4 @@
 class RoomsController < ApplicationController
-
   # before_action :authenticate_user!
 
   def new
@@ -7,16 +6,15 @@ class RoomsController < ApplicationController
   end
 
   def index
-   render json: Room.all
+    render json: Room.all
   end
 
   def create
-    
     @room = Room.new(room_params)
 
     if @room.save
 
-      list = Accomodation.where(id = accomodation_params)
+      list = Accomodation.where(id: accomodation_params)
       @room.accomodations.push(*list)
 
       render json: @room, status: :created, location: @room
@@ -32,6 +30,7 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:name, :number_of_beds, :price, :description, :picture, :room_type_id).with_defaults(user_id: current_user.id)
+    params.require(:room).permit(:name, :number_of_beds, :price, :description, :picture,
+                                 :room_type_id).with_defaults(user_id: current_user.id)
   end
 end

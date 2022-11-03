@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
     resources :rooms
+  resources :reservations, only: [:destroy, :update]
+
+  get 'logged_user', to: 'users#index'
+  get 'reservations/mine'
 
     resources :rooms_types
 
