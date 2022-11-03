@@ -58,5 +58,4 @@ end
 10.times do |i|
   Accomodation.create(name: "#{i +1}")
 end
- 
 
