@@ -1,5 +1,5 @@
 class AddRoleToUsers < ActiveRecord::Migration[7.0]
   def change
-    add_reference :users, :role, null: false, foreign_key: true, default: 1, on_delete: :cascade
+    add_reference :users, :role, null: false, foreign_key: true, default: 1
   end
 end

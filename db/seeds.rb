@@ -48,6 +48,10 @@ guest.reservations.create(room: room_couple, from_date: Date.today, to_date: Dat
 # 5.times do |i|
 #   RoomType.create(name: "#{i +1} star")
 # end
+
+10.times do |i|
+  Accomodation.create(name: "#{i +1}")
+end
 role = Role.create(name: 'admin')
 user = User.create(username: 'Ali',email:'ali@gmail.com',password:'123456', role:role)
 roomType = RoomType.create(name: 'test')

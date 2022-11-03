@@ -11,6 +11,7 @@ class ReservationsController < ApplicationController
         .includes(room: %i[room_type room_accomodations accomodations])
     )
   end
+
   def create
     @reservation = Reservation.new(create_params)
     @reservation.user_id = current_user.id
