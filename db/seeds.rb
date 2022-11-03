@@ -17,7 +17,6 @@ Role.create(name: "client")
 5.times do |i|
   RoomType.create(name: "#{i+1} star")
 end
-
-10.times do |i|
-  Accomodation.create(name: "Acc #{i+1}")
-end
+# 10.times do |i|
+#   Accomodation.create(name: "#{i +1}")
+# end
