@@ -2,6 +2,8 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
+require_relative 'support/authorization_helper'
+require_relative 'support/model_spec_helpers'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
@@ -30,6 +32,13 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  # Extend capabilities with Support modules
+  # Include Model Spec Helpers
+  config.include ModelSpecHelpers, type: :model
+  config.include ModelSpecHelpers, type: :request
+  # Include Authorization Helper
+  config.include AuthorizationHelper, type: :request
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

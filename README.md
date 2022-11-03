@@ -34,37 +34,127 @@ Things you may want to cover:
   ```
   rails server
   ```
-  from here you can access the api endpoint using postman on the following addresses :
+
+### API Endpoints Examples
+  from here you can access the api endpoint using postman on the following addresses:
+
   - Create a new user and must be  a `POST` request
   ```
       http://localhost:3000/users
   ```
- - For example
-  ```JSON
-    {
-        "user":{
-            "username": "First user",
-            "email":"user1@gmail.com",
-            "password": "123456"
-        }
-    }
-  ```
-    - Sign In a user and must be  a `POST`
-  ```
-      http://localhost:3000/users/sign_in
-  ```
- - For example
-  ```JSON
-    {
-        "user":{
-            "email":"user1@gmail.com",
-            "password": "123456"
-        }
-    }
-  ```
-    - Sign In a user and must be a `GET` request
-  ```
-      http://localhost:3000/logged_user
-  ```
- As a result, you should see all informations about the logged user.
+  - For example
+    ```JSON
+      {
+          "user":{
+              "username": "First user",
+              "email":"user1@gmail.com",
+              "password": "123456"
+          }
+      }
+    ```
+      - Sign In a user and must be  a `POST`
+    ```
+        http://localhost:3000/users/sign_in
+    ```
+  - For example
+    ```JSON
+      {
+          "user":{
+              "email":"user1@gmail.com",
+              "password": "123456"
+          }
+      }
+    ```
+      - Sign In a user and must be a `GET` request
+    ```
+        http://localhost:3000/logged_user
+    ```
+    As a result, you should see all informations about the logged user.
+  -----
+ 
+  ### **REQUIRED** for all below requests
+  - headers:
+    ```JSON
+      {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "<AUTH_TOKEN>",
+        ...
+      }
+    ```
 
+  - _**Fetch my reservations:**_
+    - **method**: `GET`
+    - **url**: `http://localhost:3001/reservations/mine`
+      - response
+        ```TS
+          [
+            {
+              id: String,
+              status: String,
+              from_date: String,
+              to_date: String,
+              room: {
+                name: String,
+                type: String,
+                number_of_beds: Integer,
+                price: String,
+                description: String,
+                accomodations: Array<String>
+              }
+            },
+          ]
+        ```
+
+  - _**Update reservation:**_
+    - **method**: `PATCH`
+    - **url**: `http://localhost:3001/reservations/{id}`
+      - params: 
+        ```JS
+          id: String
+        ```
+      - body:
+        ```JS
+          {
+            reservation: {
+              from_date: String,
+              to_date: String
+            }
+          }
+        ```
+      - response
+        ```JS
+          {
+            status: 200,
+            message: "Reservation updated successfully!",
+            reservation: {
+              id: String,
+              status: String,
+              from_date: String,
+              to_date: String,
+              room: {
+                name: String,
+                type: String,
+                number_of_beds: Integer,
+                price: String,
+                description: String,
+                accomodations: Array<String>
+              }
+            },
+          }
+        ```
+
+  - _**Cancel reservation**_:
+    - **method**: `DELETE`
+    - **url**: `http://localhost:3001/reservations/{id}`
+      - params: 
+        ```TS
+          id: String
+        ```
+      - response
+        ```TS
+          {
+            status: 200,
+            message: "Reservation canceled successfully!"
+          }
+        ```
