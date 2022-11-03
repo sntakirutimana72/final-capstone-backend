@@ -1,10 +1,11 @@
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-Rails.application.routes.draw do  
-  
+Rails.application.routes.draw do 
+   
+  devise_for :users, skip: :all
   devise_scope :user do
-    post "/users/sign_in" => "users/sessions#create", as: :user_session
-    post "/users" => "users/registrations#create", as: :user_registration
-    delete "/users/sign_out" => "users/sessions#destroy", as: :destroy_user_session
+    post "/users/sign_in", to: "users/sessions#create", as: :user_session
+    post "/users", to: "users/registrations#create", as: :user_registration
+    delete "/users/sign_out", to: "users/sessions#destroy", as: :destroy_user_session
     get 'logged_user', to: 'users/sessions#logged_user'
   end
  
