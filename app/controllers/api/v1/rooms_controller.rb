@@ -12,19 +12,21 @@ class Api::V1::RoomsController < ApplicationController
     render json: @room, status: :ok
   end
 
+
   def create
     @room = Room.new(room_params)
 
     if @room.save
-
-      list = Accomodation.where(id: accomodation_params)
-      @room.accomodations.push(*list)
-
-      render json: @room, status: :created, location: @room
+      facilities = Accomodation.where(id: acc_params[:accomodations])
+      @room.accomodations.push(*facilities)
+      render json: @room, status: :created
     else
       render json: @room.errors, status: :unprocessable_entity
     end
   end
+
+
+
 
   def room_list
     @room = Room.select('id, name')
@@ -33,12 +35,14 @@ class Api::V1::RoomsController < ApplicationController
 
   private
 
-  def accomodation_params
-    params.require(:room).permit(accomodation: [])
+   def acc_params
+    params.require(:room).permit(accomodations: [])
   end
 
   def room_params
-    params.require(:room).permit(:name, :number_of_beds, :price, :description, :picture,
-                                 :room_type_id).with_defaults(user_id: current_user.id)
+    params.require(:room)
+      .permit(:name, :number_of_beds, :price, :description, :picture, :room_type_id)
+      .merge(user: current_user)
   end
+  
 end
