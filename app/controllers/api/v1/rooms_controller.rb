@@ -4,7 +4,7 @@ class Api::V1::RoomsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @rooms = Room.all
+    @rooms = Room.includes([:room_accomodations, :accomodations, :room_type])
     render json: @rooms, status: :ok
   end
 
