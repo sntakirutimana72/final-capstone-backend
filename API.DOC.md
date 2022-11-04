@@ -5,7 +5,7 @@
   ### sign-up
 
   - Method : `POST`
-  - URL : `http://localhost:3000/users`
+  - URL : `https://easy-booking12.herokuapp.com/users`
 
   - Body
       ```JSON
@@ -39,7 +39,7 @@
   ### sign-in
 
   - Method : `POST`
-  - URL : `http://localhost:3000/users/sign_in`
+  - URL : `https://easy-booking12.herokuapp.com/users/sign_in`
 
   - Body
       ```JSON
@@ -72,7 +72,7 @@
   ### Logged_user
 
   - Method : `GET`
-  - URL : `http://localhost:3000/logged_user`
+  - URL : `https://easy-booking12.herokuapp.com/logged_user`
 
   - Header
     ```JSON
@@ -113,7 +113,7 @@
     ```
  - ### Create room
     - **method**: `POST`
-    - **url**: `http://localhost:3000/api/v1/rooms`
+    - **url**: `https://easy-booking12.herokuapp.com/api/v1/rooms`
     
     - Body:
     ```JSON
@@ -144,7 +144,7 @@
     ```
  - ### Fetch rooms :
     - **method**: `GET`
-    - **url**: `http://localhost:3000/api/v1/rooms`
+    - **url**: `https://easy-booking12.herokuapp.com/api/v1/rooms`
     
     - response
       ```JS
@@ -163,7 +163,7 @@
 
   - ### Create reservation
     - **method**: `POST`
-    - **url**: `http://localhost:3000/api/v1/reservations`
+    - **url**: `https://easy-booking12.herokuapp.com/api/v1/reservations`
     
     - Body:
       ```JS
@@ -199,7 +199,7 @@
    
    - ### Fetch my reservations:
       - **method**: `GET`
-      - **url**: `http://localhost:3000/api/v1/reservations/mine`
+      - **url**: `https://easy-booking12.herokuapp.com/api/v1/reservations/mine`
       - response
         ```JS
             [
@@ -222,7 +222,7 @@
 
    - ### Update reservation:
       - **method**: `PATCH`
-      - **url**: `http://localhost:3000/api/v1/reservations/{id}`
+      - **url**: `https://easy-booking12.herokuapp.com/api/v1/reservations/{id}`
         - params: 
           ```JS
             id: String
@@ -260,7 +260,7 @@
 
    - ### Cancel reservation:
       - **method**: `DELETE`
-      - **url**: `http://localhost:3000/reservations/{id}`
+      - **url**: `https://easy-booking12.herokuapp.com/reservations/{id}`
         - params: 
           ```TS
             id: String
