@@ -20,7 +20,8 @@ class Api::V1::ReservationsController < ApplicationController
     @reservation = Reservation.new(create_params)
     @reservation.user_id = current_user.id
     if @reservation.save
-      render json: @reservation, status: :created, reservation: @reservation
+      render json: @reservation, status: :created, reservation: @reservation,
+             message: 'Reservation canceled successfully!'
     else
       render json: @reservation.errors, status: :unprocessable_entity
     end
