@@ -42,8 +42,12 @@ Coming soon...
   - navigate to the root directory with a command
   run 'npm install'
   run 'npm start'
-
-## Authors
+  
+### Kanban board
+  - Link to the (Kanban board)[https://github.com/users/sntakirutimana72/projects/3]
+  - Link to the screenshot of the (initial state of our Kanban board)[https://user-images.githubusercontent.com/74867463/196947605-688825b1-286e-458d-8daa-0bbd197c9915.png]
+  
+#### Authors
 
 👤 **Wale Olapetan**
 
