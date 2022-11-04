@@ -1,6 +1,7 @@
 class Api::V1::RoomsController < ApplicationController
-  before_action :authenticate_user!
-  load_and_authorize_resource
+  def new
+    @room = Room.new
+  end
 
   def index
     @rooms = Room.all
@@ -11,7 +12,6 @@ class Api::V1::RoomsController < ApplicationController
     @room = Room.find(params[:id])
     render json: @room, status: :ok
   end
-
 
   def create
     @room = Room.new(room_params)
@@ -25,8 +25,11 @@ class Api::V1::RoomsController < ApplicationController
     end
   end
 
-
-
+  def dependencies
+    types = ArraySerializer.new(RoomType.all, each_serializer: RoomTypeSerializer)
+    accoms = ArraySerializer.new(Accomodation.all, each_serializer: AccomodationSerializer)
+    render(json: { types:, accoms: })
+  end
 
   def room_list
     @room = Room.select('id, name')
@@ -35,14 +38,12 @@ class Api::V1::RoomsController < ApplicationController
 
   private
 
-   def acc_params
+  def acc_params
     params.require(:room).permit(accomodations: [])
   end
 
   def room_params
-    params.require(:room)
-      .permit(:name, :number_of_beds, :price, :description, :picture, :room_type_id)
-      .merge(user: current_user)
+    params.require(:room).permit(:name, :number_of_beds, :price, :description, :picture,
+                                 :room_type_id).merge(user: current_user)
   end
-  
 end
