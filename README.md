@@ -1,160 +1,89 @@
-# README
+# Easy booking
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> Project Description
 
-Things you may want to cover:
+> The `EASY BOOKING` is a hotel booking app where users can make room reservations by specifying the date of entry and date for depature. Users will have various options to select from, based on what accomodities or special facilities offered along with a preferred room.
 
-### Ruby version
+## Built With
+- Ruby
+- Git
+- Github
+- Rubocop
+- RSpec
+- Stylelint
 
-### System dependencies
 
-### Configuration
+## Getting Started
+To get a local copy of the program running, follow these simple steps
+## Demo
+Coming soon...
 
- 1. In you [master.key](/config/master.key) replace your key by the key bellow in order to decrypt the project : 
-```
-    00bcc7567f900fd495bdf2d7983c6271
-```
-  2. The install all gems by running 
-  ```
-  bundle install
-  ```
-### Database creation
-  The database is created according to this [ERD Diagram](https://drawsql.app/teams/steve72/diagrams/final-capstone)
-  3. Create the database
-  ```
-  rails db:create
-  ```
-### Database initialization
-  4. Create tables
-  ```
-  rails db:migrate
-  ```
-  5. Run the server
-  ```
-  rails server
-  ```
+### Prerequisites
+- IDE, preferably Visual Studio Code
 
-### API Endpoints Examples
-  from here you can access the api endpoint using postman on the following addresses:
+### Install
+- Ruby
+- Rails
 
-  - Create a new user and must be  a `POST` request
-  ```
-      http://localhost:3000/users
-  ```
-  - For example
-    ```JSON
-      {
-          "user":{
-              "username": "First user",
-              "email":"user1@gmail.com",
-              "password": "123456"
-          }
-      }
-    ```
-      - Sign In a user and must be  a `POST`
-    ```
-        http://localhost:3000/users/sign_in
-    ```
-  - For example
-    ```JSON
-      {
-          "user":{
-              "email":"user1@gmail.com",
-              "password": "123456"
-          }
-      }
-    ```
-      - Sign In a user and must be a `GET` request
-    ```
-        http://localhost:3000/logged_user
-    ```
-    As a result, you should see all informations about the logged user.
-  -----
- 
-  ### **REQUIRED** for all below requests
-  - headers:
-    ```JSON
-      {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "<AUTH_TOKEN>",
-        ...
-      }
-    ```
 
-  - _**Fetch my reservations:**_
-    - **method**: `GET`
-    - **url**: `http://localhost:3001/reservations/mine`
-      - response
-        ```TS
-          [
-            {
-              id: String,
-              status: String,
-              from_date: String,
-              to_date: String,
-              room: {
-                name: String,
-                type: String,
-                number_of_beds: Integer,
-                price: String,
-                description: String,
-                accomodations: Array<String>
-              }
-            },
-          ]
-        ```
+### Setup
+- Open a command line terminal (Git bash preferrably) and navigate to a directory where you would like to save the work folder using cd.
+- Clone the repository with git clone https://github.com/sntakirutimana72/final-capstone-backend to have a copy of the backend server.
+- To get the curent working tree, git fetch --all, then checkout to "dev" branch.
+- Finally, run the application by doing the following:
+  - navigate to the root directory with a command line preferably ubuntu terminal
+  - run 'bundle install'
+  - run 'rails db:create'
+  - run 'rails db:migrate'
+  - run 'rails db:seed' 
+  - run 'rails serve'
+- Clone the front end of the application with git clone https://github.com/sntakirutimana72/final-capstone-frontend to have a copy of the front end
+- Finally, run the application by doing the following:
+  - navigate to the root directory with a command
+  run 'npm install'
+  run 'npm start'
 
-  - _**Update reservation:**_
-    - **method**: `PATCH`
-    - **url**: `http://localhost:3001/reservations/{id}`
-      - params: 
-        ```JS
-          id: String
-        ```
-      - body:
-        ```JS
-          {
-            reservation: {
-              from_date: String,
-              to_date: String
-            }
-          }
-        ```
-      - response
-        ```JS
-          {
-            status: 200,
-            message: "Reservation updated successfully!",
-            reservation: {
-              id: String,
-              status: String,
-              from_date: String,
-              to_date: String,
-              room: {
-                name: String,
-                type: String,
-                number_of_beds: Integer,
-                price: String,
-                description: String,
-                accomodations: Array<String>
-              }
-            },
-          }
-        ```
+## Authors
 
-  - _**Cancel reservation**_:
-    - **method**: `DELETE`
-    - **url**: `http://localhost:3001/reservations/{id}`
-      - params: 
-        ```TS
-          id: String
-        ```
-      - response
-        ```TS
-          {
-            status: 200,
-            message: "Reservation canceled successfully!"
-          }
-        ```
+👤 **Wale Olapetan**
+
+- GitHub: [@wale-prog](https://github.com/wale-prog)
+- LinkedIn: [@walepetan](https://www.linkedin.com/in/walepetan/)
+
+👤 **Steve**
+- GitHub: [@sntakirutimana72](https://github.com/sntakirutimana72i)
+
+👤 **Chris Siku**
+
+- GitHub: [@Chrissiku](https://github.com/Chrissiku)
+- Twitter: [@christian_siku](https://twitter.com/christian_siku)
+
+
+👤 **Ali Atayee**
+
+- GitHub: [@aliatayee](https://github.com/aliatayee)
+- Twitter: [@AqaAtayee](https://twitter.com/AqaAtayee)
+
+👤 **Safar Ali**
+
+- GitHub: [@safar1212](https://github.com/safar1212)
+- LinkedIn: [@safar-ali999](https://www.linkedin.com/in/safar-ali999/)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to Microverse
+- Shoutout to [Murat Korkmaz](https://www.behance.net/muratk) for providing the design
+
+## 📝 License
+
+This project is [MIT](./LICENSE) licensed.
