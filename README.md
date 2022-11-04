@@ -52,6 +52,27 @@ Things you may want to cover:
           }
       }
     ```
+      - Create a new room and must be  a `POST` request
+  ```
+      http://localhost:3000/api/v1/rooms
+  ```
+  - For example
+    ```JSON
+      {
+          "room":{
+              "name": "First room",
+              "picture":"https://picture.com",
+              "number_of_beds": 2,
+              "price": 100,
+              "description": "This is first room",
+              "room_type_id": 1,
+              "accomodations":[1,2]
+          }
+      }
+    ```
+      As a result, you should be able to create a new room.
+  -----
+
       - Sign In a user and must be  a `POST`
     ```
         http://localhost:3000/users/sign_in
