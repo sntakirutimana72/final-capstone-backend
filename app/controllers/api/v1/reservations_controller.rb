@@ -4,8 +4,7 @@ class Api::V1::ReservationsController < ApplicationController
   load_and_authorize_resource
 
   def room_list
-    @reserved_rooms = Reservation.pluck(:room_id)
-    @rooms = Room.where('id != ?', @reserved_rooms).select('id,name')
+    @rooms = Room.select('id,name')
     render json: { rooms: @rooms }, status: :ok
   end
 
