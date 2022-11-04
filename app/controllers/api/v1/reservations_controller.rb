@@ -1,8 +1,13 @@
-class ReservationsController < ApplicationController
+class Api::V1::ReservationsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :query_resesrvation, except: :mine
+  before_action :query_resesrvation, except: %i[mine create room_list]
+  load_and_authorize_resource
 
-  def index; end
+  def room_list
+    @reserved_rooms = Reservation.pluck(:room_id)
+    @rooms = Room.where('id != ?', @reserved_rooms).select('id,name')
+    render json: { rooms: @rooms }, status: :ok
+  end
 
   def mine
     render(
@@ -49,9 +54,9 @@ class ReservationsController < ApplicationController
     params.require(:reservation).permit(:from_date, :to_date)
   end
 
-  # def query_resesrvation
-  #   @reservation = current_user.reservations.find(params[:id])
-  # rescue StandardError
-  #   respond_not_found
-  # end
+  def query_resesrvation
+    @reservation = current_user.reservations.find(params[:id])
+  rescue StandardError
+    respond_not_found
+  end
 end

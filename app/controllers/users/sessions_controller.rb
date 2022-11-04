@@ -1,6 +1,4 @@
 class Users::SessionsController < Devise::SessionsController
-  before_action :authenticate_user!, only: :destroy
-
   respond_to :json
 
   def destroy
