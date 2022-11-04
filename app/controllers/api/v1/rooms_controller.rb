@@ -1,7 +1,7 @@
 class Api::V1::RoomsController < ApplicationController
-  def new
-    @room = Room.new
-  end
+  before_action :authenticate_user!
+
+  load_and_authorize_resource
 
   def index
     @rooms = Room.all
@@ -29,11 +29,6 @@ class Api::V1::RoomsController < ApplicationController
     types = ArraySerializer.new(RoomType.all, each_serializer: RoomTypeSerializer)
     accoms = ArraySerializer.new(Accomodation.all, each_serializer: AccomodationSerializer)
     render(json: { types:, accoms: })
-  end
-
-  def room_list
-    @room = Room.select('id, name')
-    render json: { rooms: @room }, status: :ok
   end
 
   private
