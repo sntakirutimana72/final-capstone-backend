@@ -1,19 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe(ReservationsController, type: :request) do
+RSpec.describe(Api::V1::ReservationsController, type: :request) do
   describe('invalid Authorization') do
     it('GET /reservations/mine') do
-      get(reservations_mine_path)
+      get(api_v1_reservations_mine_path)
       expect(response).to have_http_status(:unauthorized)
     end
 
     it('DELETE /reservations/:id') do
-      delete(reservation_path(1))
+      delete(api_v1_reservation_path(1))
       expect(response).to have_http_status(:unauthorized)
     end
 
     it('PATCH /reservations/:id') do
-      patch(reservation_path(1))
+      patch(api_v1_reservation_path(1))
       expect(response).to have_http_status(:unauthorized)
     end
   end
@@ -28,14 +28,14 @@ RSpec.describe(ReservationsController, type: :request) do
 
     describe('authorized') do
       it('fetch my reservations') do
-        get(reservations_mine_path, headers: @headers)
+        get(api_v1_reservations_mine_path, headers: @headers)
         expect(response).to have_http_status(:ok)
       end
 
       context('update reservation') do
         it('with only :to_date') do
           patch(
-            reservation_path(@reservation),
+            api_v1_reservation_path(@reservation),
             headers: @headers,
             params: { reservation: { to_date: Date.today } }, as: :json
           )
@@ -44,7 +44,7 @@ RSpec.describe(ReservationsController, type: :request) do
 
         it('with only :from_date') do
           patch(
-            reservation_path(@reservation),
+            api_v1_reservation_path(@reservation),
             headers: @headers,
             params: { reservation: { from_date: Date.today } }, as: :json
           )
@@ -53,7 +53,7 @@ RSpec.describe(ReservationsController, type: :request) do
 
         it('with both :from_date & :to_date') do
           patch(
-            reservation_path(@reservation),
+            api_v1_reservation_path(@reservation),
             headers: @headers,
             params: { reservation: { from_date: Date.today, to_date: Date.today } }, as: :json
           )
@@ -62,7 +62,7 @@ RSpec.describe(ReservationsController, type: :request) do
       end
 
       it('cancel the reservation') do
-        delete(reservation_path(@reservation), headers: @headers)
+        delete(api_v1_reservation_path(@reservation), headers: @headers)
         expect(response).to have_http_status(:ok)
       end
     end

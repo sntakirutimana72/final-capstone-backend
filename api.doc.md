@@ -1,5 +1,5 @@
 # API ENDPOINTS DOC
-> Using the specifications below, users can access our api endpoints using tools like `postman`, etc.
+> Using the specifications below, users can access our API endpoints using tools like `postman`, etc.
 
 ## Specifications
   ### sign-up
@@ -10,30 +10,30 @@
   - Body
       ```JSON
         {
-            "user":{
-                "email":"string",
-                "username": "string",
-                "password": "string"
-            }
+          "user": {
+            "email": "string",
+            "username": "string",
+            "password": "string"
+          }
         }
       ```
   - Response
     - Header
       ```JSON
           {
-            "Authorization":"string",
+            "Authorization": "string",
             ... 
           }
       ```
     - Body
       ```JSON
         {
-            "user":{
-                "id": integer,
-                "email": "string",
-                "username": "string",
-                "role": "string"
-            }
+          "user": {
+            "id": integer,
+            "email": "string",
+            "username": "string",
+            "role": "string"
+          }
         }
       ```
   ### sign-in
@@ -44,32 +44,32 @@
   - Body
       ```JSON
         {
-            "user":{
-                "email":"string",
-                "password": "string"
-            }
+          "user": {
+            "email": "string",
+            "password": "string"
+          }
         }
       ```
   - Response
     - Header
       ```JSON
           {
-            "Authorization":"string",
+            "Authorization": "string",
             ... 
           }
       ```
     - Body
       ```JSON
         {
-            "user":{
-                "id": integer,
-                "email": "string",
-                "username": "string",
-                "role": "string"
-            }
+          "user": {
+            "id": integer,
+            "email": "string",
+            "username": "string",
+            "role": "string"
+          }
         }
       ```
-  ### Logged_user
+  ### logged_user
 
   - Method : `GET`
   - URL : `http://localhost:3000/logged_user`
@@ -77,7 +77,7 @@
   - Header
     ```JSON
         {
-          "Authorization":"string",
+          "Authorization": "string",
           ... 
         }
     ```
@@ -85,54 +85,93 @@
     - Header
       ```JSON
           {
-            "Authorization":"string",
+            "Authorization": "string",
             ... 
           }
       ```
     - Body
       ```JSON
         {
-            "user":{
-                "id": integer,
-                "email": "string",
-                "username": "string",
-                "role": "string"
-            }
+          "user": {
+            "id": integer,
+            "email": "string",
+            "username": "string",
+            "role": "string"
+          }
         }
+      ```
+
+  ### logout
+
+  - **Method**: `DELETE`
+  - **url**: `http://localhost:3000/users/sign_out`
+
+  - **headers**:
+    ```JSON
+        {
+          "Authorization": "string",
+          ... 
+        }
+    ```
+  - **response**:
+    - body
+      ```JSON
+          {
+            "message": "User logged out successfully.",
+            "status": 200
+          }
       ```
  
   ### **REQUIRED** for all below requests
-  - headers:
-    ```JSON
-      {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "<AUTH_TOKEN>",
-        ...
-      }
-    ```
+  **headers:**
+  ```JSON
+    {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Authorization": "<AUTH_TOKEN>",
+      ...
+    }
+  ```
  - ### Create room
     - **method**: `POST`
     - **url**: `http://localhost:3000/api/v1/rooms`
     
     - Body:
-    ```JSON
-      {
-          "room":{
-              "name": "string",
-              "picture":"string",
-              "number_of_beds": integer,
-              "price": decimal,
-              "description": "string",
-              "room_type_id": integer,
-              "accomodations": Array<integer>
+      ```JSON
+        {
+          "room": {
+            "name": "string",
+            "picture": "string",
+            "number_of_beds": integer,
+            "price": decimal,
+            "description": "string",
+            "room_type_id": integer,
+            "accomodations": Array<integer>
           }
+        }
+      ```
+
+  - response
+    ```TS
+      room: {
+        name: String,
+        type: String,
+        number_of_beds: Integer,
+        picture : String
+        price: String,
+        description: String,
+        accomodations: Array<String>
       }
     ```
 
-  - response
-    ```JS
-          room: {
+ - ### Fetch rooms :
+    - **method**: `GET`
+    - **url**: `http://localhost:3000/api/v1/rooms`
+    
+    - response
+      ```TS
+        [ 
+          {
             name: String,
             type: String,
             number_of_beds: Integer,
@@ -141,24 +180,8 @@
             description: String,
             accomodations: Array<String>
           },
-    ```
- - ### Fetch rooms :
-    - **method**: `GET`
-    - **url**: `http://localhost:3000/api/v1/rooms`
-    
-    - response
-      ```JS
-           [ 
-             {
-              name: String,
-              type: String,
-              number_of_beds: Integer,
-              picture : String
-              price: String,
-              description: String,
-              accomodations: Array<String>
-            }, ...
-          ]
+          ...
+        ]
       ```
 
   - ### Create reservation
@@ -166,7 +189,7 @@
     - **url**: `http://localhost:3000/api/v1/reservations`
     
     - Body:
-      ```JS
+      ```TS
         {
           reservation: {
             from_date: String,
@@ -176,7 +199,7 @@
         }
       ```
     - response
-      ```JS
+      ```TS
         {
           status: 200,
           message: "Reservation created successfully!",
@@ -193,7 +216,7 @@
               description: String,
               accomodations: Array<String>
             }
-          },
+          }
         }
         ```
    
@@ -201,23 +224,25 @@
       - **method**: `GET`
       - **url**: `http://localhost:3000/api/v1/reservations/mine`
       - response
-        ```JS
-            [
-              {
-                id: String,
-                status: String,
-                from_date: String,
-                to_date: String,
-                room: {
-                  name: String,
-                  type: String,
-                  number_of_beds: Integer,
-                  price: String,
-                  description: String,
-                  accomodations: Array<String>
-                }
-              }, ...
-            ]
+        ```TS
+          [
+            {
+              id: String,
+              status: String,
+              from_date: String,
+              to_date: String,
+              room: {
+                id: Integer,
+                name: String,
+                type: String,
+                number_of_beds: Integer,
+                price: String,
+                description: String,
+                accomodations: Array<String>
+              }
+            },
+            ...
+          ]
         ```
 
    - ### Update reservation:
@@ -228,7 +253,7 @@
             id: String
           ```
       - body:
-        ```JS
+        ```TS
           {
             reservation: {
               from_date: String,
@@ -237,7 +262,7 @@
           }
         ```
       - response
-        ```JS
+        ```TS
           {
             status: 200,
             message: "Reservation updated successfully!",
@@ -247,6 +272,7 @@
               from_date: String,
               to_date: String,
               room: {
+                id: Integer,
                 name: String,
                 type: String,
                 number_of_beds: Integer,
@@ -254,7 +280,7 @@
                 description: String,
                 accomodations: Array<String>
               }
-            },
+            }
           }
         ```
 
