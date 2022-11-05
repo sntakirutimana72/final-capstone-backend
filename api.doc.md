@@ -5,7 +5,7 @@
   ### sign-up
 
   - Method : `POST`
-  - URL : `http://localhost:3000/users`
+  - URL : `https://easy-booking12.herokuapp.com/users`
 
   - Body
       ```JSON
@@ -19,9 +19,9 @@
       ```
   - Response
     - Header
-      ```JSON
+      ```TS
           {
-            "Authorization": "string",
+            Authorization: String,
             ... 
           }
       ```
@@ -29,7 +29,7 @@
       ```JSON
         {
           "user": {
-            "id": integer,
+            "id": "integer",
             "email": "string",
             "username": "string",
             "role": "string"
@@ -39,7 +39,7 @@
   ### sign-in
 
   - Method : `POST`
-  - URL : `http://localhost:3000/users/sign_in`
+  - URL : `https://easy-booking12.herokuapp.com/users/sign_in`
 
   - Body
       ```JSON
@@ -52,9 +52,9 @@
       ```
   - Response
     - Header
-      ```JSON
+      ```TS
           {
-            "Authorization": "string",
+            Authorization: String,
             ... 
           }
       ```
@@ -62,7 +62,7 @@
       ```JSON
         {
           "user": {
-            "id": integer,
+            "id": "integer",
             "email": "string",
             "username": "string",
             "role": "string"
@@ -72,20 +72,20 @@
   ### logged_user
 
   - Method : `GET`
-  - URL : `http://localhost:3000/logged_user`
+  - URL : `https://easy-booking12.herokuapp.com/logged_user`
 
   - Header
-    ```JSON
+    ```TS
         {
-          "Authorization": "string",
+          Authorization: String,
           ... 
         }
     ```
   - Response
     - Header
-      ```JSON
+      ```TS
           {
-            "Authorization": "string",
+            Authorization: String,
             ... 
           }
       ```
@@ -93,7 +93,7 @@
       ```JSON
         {
           "user": {
-            "id": integer,
+            "id": "integer",
             "email": "string",
             "username": "string",
             "role": "string"
@@ -107,9 +107,9 @@
   - **url**: `http://localhost:3000/users/sign_out`
 
   - **headers**:
-    ```JSON
+    ```TS
         {
-          "Authorization": "string",
+          Authorization: String,
           ... 
         }
     ```
@@ -134,19 +134,19 @@
   ```
  - ### Create room
     - **method**: `POST`
-    - **url**: `http://localhost:3000/api/v1/rooms`
+    - **url**: `https://easy-booking12.herokuapp.com/api/v1/rooms`
     
     - Body:
-      ```JSON
+      ```TS
         {
-          "room": {
-            "name": "string",
-            "picture": "string",
-            "number_of_beds": integer,
-            "price": decimal,
-            "description": "string",
-            "room_type_id": integer,
-            "accomodations": Array<integer>
+          room: {
+            name: String,
+            picture: String,
+            number_of_beds: Integer,
+            price: Decimal,
+            description: String,
+            room_type_id: integer,
+            accomodations: Array<Integer>
           }
         }
       ```
@@ -154,6 +154,7 @@
   - response
     ```TS
       room: {
+        id: Integer,
         name: String,
         type: String,
         number_of_beds: Integer,
@@ -172,11 +173,12 @@
       ```TS
         [ 
           {
+            id: Integer,
             name: String,
             type: String,
             number_of_beds: Integer,
             picture : String
-            price: String,
+            price: Float,
             description: String,
             accomodations: Array<String>
           },
@@ -186,7 +188,7 @@
 
   - ### Create reservation
     - **method**: `POST`
-    - **url**: `http://localhost:3000/api/v1/reservations`
+    - **url**: `https://easy-booking12.herokuapp.com/api/v1/reservations`
     
     - Body:
       ```TS
@@ -194,7 +196,7 @@
           reservation: {
             from_date: String,
             to_date: String,
-            room_id: integer
+            room_id: Integer
           }
         }
       ```
@@ -204,11 +206,12 @@
           status: 200,
           message: "Reservation created successfully!",
           reservation: {
-            id: String,
+            id: Integer,
             status: String,
             from_date: String,
             to_date: String,
             room: {
+              id: Integer,
               name: String,
               type: String,
               number_of_beds: Integer,
@@ -222,12 +225,12 @@
    
    - ### Fetch my reservations:
       - **method**: `GET`
-      - **url**: `http://localhost:3000/api/v1/reservations/mine`
+      - **url**: `https://easy-booking12.herokuapp.com/api/v1/reservations/mine`
       - response
         ```TS
           [
             {
-              id: String,
+              id: Integer,
               status: String,
               from_date: String,
               to_date: String,
@@ -236,7 +239,7 @@
                 name: String,
                 type: String,
                 number_of_beds: Integer,
-                price: String,
+                price: Float,
                 description: String,
                 accomodations: Array<String>
               }
@@ -247,9 +250,9 @@
 
    - ### Update reservation:
       - **method**: `PATCH`
-      - **url**: `http://localhost:3000/api/v1/reservations/{id}`
+      - **url**: `https://easy-booking12.herokuapp.com/api/v1/reservations/{id}`
         - params: 
-          ```JS
+          ```TS
             id: String
           ```
       - body:
@@ -267,7 +270,7 @@
             status: 200,
             message: "Reservation updated successfully!",
             reservation: {
-              id: String,
+              id: Integer,
               status: String,
               from_date: String,
               to_date: String,
@@ -276,7 +279,7 @@
                 name: String,
                 type: String,
                 number_of_beds: Integer,
-                price: String,
+                price: Float,
                 description: String,
                 accomodations: Array<String>
               }
@@ -286,7 +289,7 @@
 
    - ### Cancel reservation:
       - **method**: `DELETE`
-      - **url**: `http://localhost:3000/reservations/{id}`
+      - **url**: `https://easy-booking12.herokuapp.com/reservations/{id}`
         - params: 
           ```TS
             id: String
